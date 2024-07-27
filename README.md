@@ -1,6 +1,13 @@
 # next.js-deploy
 
-Ce projet décrit comment déployer une application Next.js en utilisant Docker et Nginx Proxy Manager. Il est en lien avec la vidéo Youtube :
+Ce projet décrit comment déployer une application Next.js en utilisant Docker et Nginx Proxy Manager. 
+
+Il est en lien avec les vidéos Youtube :
+
+[Version Fast ⚡](youtu.be/sCzHpMbZ8Go)
+
+[Version Longue 🐢](youtu.be/68x-eVevEG4)
+
 
 ## Prérequis
 
