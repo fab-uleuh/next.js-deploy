@@ -8,7 +8,7 @@ Il est en lien avec les vidéos Youtube :
 
 [Version Longue 🐢](youtu.be/68x-eVevEG4)
 
-[Readme fr 🇬🇧](https://github.com/fab-uleuh/next.js-deploy/blob/main/README.md)
+[Readme en 🇬🇧](https://github.com/fab-uleuh/next.js-deploy/blob/main/README.md)
 
 ## Prérequis
 
