@@ -1,70 +1,71 @@
 # next.js-deploy
 
-Ce projet décrit comment déployer une application Next.js en utilisant Docker et Nginx Proxy Manager. 
+This project describes how to deploy a Next.js application using Docker and Nginx Proxy Manager.
 
-Il est en lien avec les vidéos Youtube :
+It is linked to the following YouTube videos:
 
-[Version Fast ⚡](youtu.be/sCzHpMbZ8Go)
+[Fast Version ⚡](youtu.be/sCzHpMbZ8Go)
 
-[Version Longue 🐢](youtu.be/68x-eVevEG4)
+[Long Version 🐢](youtu.be/68x-eVevEG4)
 
+[Readme fr 🇫🇷](https://github.com/fab-uleuh/next.js-deploy/blob/main/README.md)
 
-## Prérequis
+## Prerequisites
 
-Avant de commencer, assurez-vous d'avoir installé Docker et Docker Compose sur votre machine. Vous pouvez suivre les instructions officielles pour installer Docker sur Ubuntu ici :
+Before starting, make sure you have Docker and Docker Compose installed on your machine. You can follow the official instructions to install Docker on Ubuntu here:
 
-[Installer Docker sur Ubuntu](https://docs.docker.com/engine/install/ubuntu/)
+[Install Docker on Ubuntu](https://docs.docker.com/engine/install/ubuntu/)
 
 ## Documentation
 
-- [Documentation Next.js sur le déploiement](https://nextjs.org/docs/app/building-your-application/deploying)
-- [Documentation Nginx Proxy Manager](https://nginxproxymanager.com/setup/)
+- [Next.js Deployment Documentation](https://nextjs.org/docs/app/building-your-application/deploying)
+- [Nginx Proxy Manager Documentation](https://nginxproxymanager.com/setup/)
 
-## Étapes de déploiement
+## Deployment Steps
 
-### 1. Créer un réseau Docker pour Nginx
+### 1. Create a Docker Network for Nginx
 
-Cette commande crée un réseau Docker nommé `nginx` qui sera utilisé pour connecter les conteneurs.
+This command creates a Docker network named `nginx` that will be used to connect the containers.
 
 ```sh
 sudo docker network create nginx
 ```
 
-### 2. Construire l'image Docker pour l'application Next.js
+### 2. Build the Docker Image for the Next.js Application
 
-Utilisez la commande suivante pour construire l'image Docker à partir du Dockerfile dans le répertoire courant. L'option `-t nextjs-docker` attribue un nom à l'image Docker.
+Use the following command to build the Docker image from the Dockerfile in the current directory. The `-t nextjs-docker` option assigns a name to the Docker image.
 
 ```sh
 docker build -t nextjs-docker .
 ```
 
-### 3. Démarrer les services avec Docker Compose
+### 3. Start the Services with Docker Compose
 
-Cette commande démarre les services définis dans le fichier `docker-compose.yml` en mode détaché (en arrière-plan).
+This command starts the services defined in the `docker-compose.yml` file in detached mode (in the background).
 
 ```sh
 sudo docker compose up -d
 ```
 
-### 4. Recréer les services avec Docker Compose
+### 4. Recreate the Services with Docker Compose
 
-Si vous avez besoin de recréer les conteneurs (par exemple, après avoir modifié la configuration), utilisez l'option `--force-recreate`.
+If you need to recreate the containers (e.g., after modifying the configuration), use the `--force-recreate` option.
 
 ```sh
 sudo docker compose up -d --force-recreate
 ```
 
-### 5. Accéder au conteneur Nginx Proxy Manager
+### 5. Access the Nginx Proxy Manager Container
 
-Pour accéder à un conteneur spécifique, utilisez `docker exec` avec l'option `-it` pour ouvrir une session interactive dans le conteneur `nginx-proxy-manager-app-1`.
+To access a specific container, use `docker exec` with the `-it` option to open an interactive session in the `nginx-proxy-manager-app-1` container.
 
 ```sh
 sudo docker exec -it nginx-proxy-manager-app-1 bash
 ```
 
-## Configuration Nginx Static HTML Export
+## Nginx Static HTML Export Configuration
 
-Ajoutez la configuration suivante pour définir l'emplacement du site. Cette configuration indique à Nginx de servir le contenu du répertoire `/site/app-3` à la racine de l'URL.
+Add the following configuration to define the site location. This configuration tells Nginx to serve the content from the `/site/app-3` directory at the root of the URL.
 
 ```nginx
 location / {
@@ -72,11 +73,11 @@ location / {
 }
 ```
 
-## Notes supplémentaires
+## Additional Notes
 
-- Assurez-vous de remplacer `/site/app-3` par le chemin correct vers le répertoire où votre application est déployée.
-- Vérifiez les noms de conteneurs et les configurations spécifiques à votre environnement de déploiement.
+- Make sure to replace `/site/app-3` with the correct path to the directory where your application is deployed.
+- Check the container names and configurations specific to your deployment environment.
 
 ## Conclusion
 
-En suivant ces étapes, vous devriez être en mesure de déployer votre application Next.js en utilisant Docker et Nginx Proxy Manager. N'hésitez pas à consulter la documentation liée pour plus de détails et de configuration avancée.
+By following these steps, you should be able to deploy your Next.js application using Docker and Nginx Proxy Manager. Feel free to consult the linked documentation for more details and advanced configuration.
